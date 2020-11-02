@@ -267,15 +267,15 @@ static /*@null@*/ /*@dependent@*/FILE *fopen_set_perms (
 		return NULL;
 	}
 
-#ifdef HAVE_FCHOWN
-	if (fchown (fileno (fp), sb->st_uid, sb->st_gid) != 0) {
-		goto fail;
-	}
-#else				/* !HAVE_FCHOWN */
-	if (chown (name, sb->st_mode) != 0) {
-		goto fail;
-	}
-#endif				/* !HAVE_FCHOWN */
+// #ifdef HAVE_FCHOWN
+// 	if (fchown (fileno (fp), sb->st_uid, sb->st_gid) != 0) {
+// 		goto fail;
+// 	}
+// #else				/* !HAVE_FCHOWN */
+// 	if (chown (name, sb->st_mode) != 0) {
+// 		goto fail;
+// 	}
+// #endif				/* !HAVE_FCHOWN */
 
 #ifdef HAVE_FCHMOD
 	if (fchmod (fileno (fp), sb->st_mode & 0664) != 0) {
@@ -417,7 +417,7 @@ int commonio_lock (struct commonio_db *db)
 {
 	int i;
 
-#ifdef HAVE_LCKPWDF
+#if 0
 	/*
 	 * Only if the system libc has a real lckpwdf() - the one from
 	 * lockpw.c calls us and would cause infinite recursion!

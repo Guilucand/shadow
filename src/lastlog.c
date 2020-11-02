@@ -55,7 +55,7 @@
  * Needed for MkLinux DR1/2/2.1 - J.
  */
 #ifndef LASTLOG_FILE
-#define LASTLOG_FILE "/var/log/lastlog"
+#define LASTLOG_FILE "lastlog"
 #endif
 
 /*

@@ -204,7 +204,7 @@ static const struct subordinate_range *find_range(struct commonio_db *db,
         /*
          * We only do special handling for these two files
          */
-        if ((0 != strcmp(db->filename, "/etc/subuid")) && (0 != strcmp(db->filename, "/etc/subgid")))
+        if ((0 != strcmp(db->filename, "etc/subuid")) && (0 != strcmp(db->filename, "etc/subgid")))
                 return NULL;
 
         /*
@@ -556,7 +556,7 @@ static int remove_range (struct commonio_db *db,
 }
 
 static struct commonio_db subordinate_uid_db = {
-	"/etc/subuid",		/* filename */
+	"etc/subuid",		/* filename */
 	&subordinate_ops,	/* ops */
 	NULL,			/* fp */
 #ifdef WITH_SELINUX
@@ -638,7 +638,7 @@ uid_t sub_uid_find_free_range(uid_t min, uid_t max, unsigned long count)
 }
 
 static struct commonio_db subordinate_gid_db = {
-	"/etc/subgid",		/* filename */
+	"etc/subgid",		/* filename */
 	&subordinate_ops,	/* ops */
 	NULL,			/* fp */
 #ifdef WITH_SELINUX
